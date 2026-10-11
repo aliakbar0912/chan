@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champion - Portfolio Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        neon: {
+                            cyan: '#00f2fe',
+                            blue: '#4facfe',
+                            purple: '#7f00ff',
+                            pink: '#ff007f'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(79, 172, 254, 0.3);
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 70px -5px rgba(0, 242, 254, 0.5);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #00c6ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="h-full flex items-center justify-center p-4 relative overflow-hidden bg-slate-950 text-slate-100">
+
+    <!-- Background Glow Effects -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/20 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+
+    <!-- Main Card Container -->
+    <main class="w-full max-w-md animate-float relative z-10">
+        <div class="glass-card glow-effect rounded-3xl p-8 transition-all duration-500 ease-out hover:-translate-y-1">
+            
+            <!-- Profile Header/Avatar Section -->
+            <div class="flex flex-col items-center text-center">
+                <div class="relative mb-6 group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
+                    <div class="relative w-28 h-28 rounded-full bg-slate-900 border-2 border-cyan-400/50 flex items-center justify-center text-4xl shadow-inner">
+                        🏆
+                    </div>
+                    <!-- Status Indicator -->
+                    <span class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-4 border-slate-900 rounded-full"></span>
+                </div>
+
+                <!-- Name & Title -->
+                <h1 class="text-3xl font-extrabold tracking-tight text-white mb-1">
+                    <span class="text-gradient">CHAMPION</span>
+                </h1>
+                <p class="text-slate-400 text-sm font-medium tracking-wide flex items-center gap-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                    Digital Creator & Visionary
+                </p>
+            </div>
+
+            <!-- Details Grid -->
+            <div class="mt-8 space-y-3">
+                <!-- Location Info -->
+                <div class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-800/40 border border-slate-700/40 hover:bg-slate-800/70 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-sm">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <span class="text-sm font-medium text-slate-300">Origin</span>
+                    </div>
+                    <span class="text-sm font-bold text-white flex items-center gap-2">
+                        India 🇮🇳
+                    </span>
+                </div>
+
+                <!-- Role / Persona -->
+                <div class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-800/40 border border-slate-700/40 hover:bg-slate-800/70 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="text-sm font-medium text-slate-300">Status</span>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                        Active & Unstoppable
+                    </span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-8 grid grid-cols-2 gap-3">
+                <button onclick="copyLink()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-cyan-500/25 active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-share-nodes"></i> Share
+                </button>
+                <button onclick="showMessage()" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Contact
+                </button>
+            </div>
+
+            <!-- Notification Toast -->
+            <div id="toast" class="hidden mt-4 p-3 rounded-xl bg-slate-800 border border-cyan-500/40 text-cyan-300 text-xs text-center font-medium transition-all">
+                Copied link to clipboard!
+            </div>
+
+            <!-- Footer Note -->
+            <div class="mt-6 text-center">
+                <p class="text-xs text-slate-500 tracking-wider uppercase">
+                    Designed for <span class="text-slate-400 font-semibold">Champion</span>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function copyLink() {
+            // Copy action using document.execCommand fallback for iframe safety
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            showToast("Profile link copied!");
+        }
+
+        function showMessage() {
+            showToast("Greetings from Champion!");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
